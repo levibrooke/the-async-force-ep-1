@@ -1,13 +1,8 @@
-// instantiate a new XHR object for person4Name
+// instantiate a new XHR object for person4
 let newReq = new XMLHttpRequest();
 newReq.addEventListener("load", person4Name); // load event listener
 newReq.open("GET", "https://swapi.co/api/people/4/"); // open the request
 newReq.send(); // send the request
-
-
-// function person4Name() {
-//   document.getElementById("person4Name").innerText = obj.name;
-// }
 
 // declare function for event listener
 function person4Name () {
@@ -30,4 +25,27 @@ function person4Homeworld() {
   document.getElementById("person4HomeWorld").innerText = person4WorldResponse.name;
 }
 
+// instantiate new XHR object for person14
+let person14Req = new XMLHttpRequest();
+person14Req.addEventListener("load", person14Name);
+person14Req.open("GET", "https://swapi.co/api/people/14/");
+person14Req.send();
 
+function person14Name() {
+  console.log(this.response);
+  let person14NameResponse = JSON.parse(this.response);
+  document.getElementById("person14Name").innerText = person14NameResponse.name;
+
+  let reqPerson14Species = new XMLHttpRequest();
+  reqPerson14Species.addEventListener("load", person14Species);
+  reqPerson14Species.open("GET", person14NameResponse.species);
+  reqPerson14Species.send();
+}
+
+function person14Species() {
+  console.log(this.response);
+  let person14SpeciesResponse = JSON.parse(this.response);
+  document.getElementById("person14Species").innerText = person14SpeciesResponse.name;
+}
+
+// list of all films

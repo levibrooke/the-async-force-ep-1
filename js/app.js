@@ -89,7 +89,7 @@ function films() {
       reqPlanets.send();
 
       function planets() {
-        console.log(this.response);
+        // console.log(this.response);
         let formatPlanets = JSON.parse(this.response);
         let planetName = formatPlanets.name;
 
